@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+       width: 200px;
+       height: 200px;
+       background-color:blue ; 
+       animation-name: bgcolor;
+       animation-duration: 4s;
+       animation-timing-function: linear;
+       animation-delay: 2s;
+       animation-iteration-count: infinite;
+       /* animation-direction: reverse; */
+       position: absolute;
+       top: 0%;
+       left: 0%;
+       border-radius: 0px;
+    }
+    @keyframes bgcolor {
+        /* from{
+            background-color:blue ; 
+        }
+        to{
+            background-color:red ; 
+        } */
+        0%{
+            background-color:blue ;
+            top: 0%;
+            left: 0%; 
+            border-radius: 10px;
+        }
+        20%{
+            background-color:green; 
+            top: 0%;
+            left: 40%;
+            border-radius: 40px;
+
+        }
+        40%{
+            background-color:red; 
+            top: 40%;
+            left: 40%;
+            border-radius: 80px;
+
+        }80%{
+            background-color:yellow; 
+            top: 40%;
+            left: 0%;
+            border-radius: 120px;
+
+        }
+        100%{
+            background-color:pink ; 
+        }
+    }
+
+</style>
+<body>
+<div>
+
+</div>    
+</body>
+</html>
