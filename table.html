@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 500px;
+            text-align: center;
+            height: 200px;
+            cursor: pointer;
+        }
+        tbody>tr:hover{
+            background-color: #124076;
+            color: #fff;
+        }
+        /* tbody>tr:first-child{
+            background-color: #557599;
+            color: #fff;
+        } */
+        /* tbody>tr:last-child{
+            background-color: #d44bc9;
+            color: #fff;
+        } */
+tbody>tr:nth-child(odd){
+    background-color: #124076;
+            color: #fff;
+}
+    </style>
+    <h1>student details</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>course</th>
+                <th colspan="2">phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>ali</td>
+                <td>ali@gmail.com</td>
+                <td>cpism</td>
+                <td>0215448</td>
+                <td>0215448</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>alisha</td>
+                <td>ali@gmail.com</td>
+                <td>cpism</td>
+                <td>0215448</td>
+                <td>0215448</td>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>alishba</td>
+                <td>ali@gmail.com</td>
+                <td>cpism</td>
+                <td>0215448</td>
+                <td>0215448</td>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>aliyan</td>
+                <td>ali@gmail.com</td>
+                <td>cpism</td>
+                <td>0215448</td>
+                <td>0215448</td>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>alishar</td>
+                <td>ali@gmail.com</td>
+                <td>cpism</td>
+                <td>0215448</td>
+                   <td>0215448</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

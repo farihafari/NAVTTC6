@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>form</h1>
+    <form action="index.html">
+        <label for="">user Name</label>
+        <input type="text" value="" pattern="[a-z]{3,12}" placeholder="enter your name" required> <br><br>
+        <label for="">user email</label>
+        <input type="email" required pattern=""> <br><br>
+        <label for="">user password</label>
+        <input type="password" required> <br><br>
+        <label for="">user number</label>
+        <input type="tel"> <br><br>
+        <label for="">user age</label>
+        <input type="number"> <br><br>
+        <label for="">color </label>
+        <input type="color"> <br><br>
+        <label for="">gender</label>
+        <br><br>
+        <label for="">male</label>
+        <input type="radio" name="gender"> 
+        <label for="">female</label>
+        <input type="radio" name="gender"> <br><br>
+        <label for="">subject</label>
+        <br>
+        <label for="">english</label>
+        <input type="checkbox">
+        <label for="">urdu</label>
+        <input type="checkbox">
+        <label for="">maths</label>
+        <input type="checkbox">
+        <label for="">computer</label>
+        <input type="checkbox">
+         <br><br>
+        <label for="">progress</label>
+        <input type="range"> <br><br>
+        <label for="">cities</label>
+        <br><br>
+        <select name="" id="">
+            <option value="">select anyone city</option>
+            <option value="kh1">karachi</option>
+            <option value="">lahore</option>
+            <option value="">islamabad</option>
+            <option value="">faislabad</option>
+            <option value="">queeta</option>
+        </select>
+        <label for="">cities</label>
+        <input list="dataList">
+        <datalist id="dataList">
+            <option value="select anyone city"></option>
+            <option value="karachi">karachi</option>
+            <option value="korangi">korangi</option>
+            <option value="islamabad">islamabad</option>
+            <option value="faislabad">faislabad</option>
+            <option value="queeta">queeta</option>
+        </datalist>
+        <input type="submit" value="click">
+    </form>
+</body>
+</html>
