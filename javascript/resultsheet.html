@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container,.dataTable{
+            width: 90%;
+            /* border: 1px solid; */
+            margin: 40px auto;
+        }
+        .row{
+            width: 100%;
+height: 50px;
+display: flex;
+flex-wrap: wrap;
+/* border: 1px solid green; */
+justify-content: space-evenly;
+align-items: center;
+        }
+        .col{
+            width: 40%;
+            height: 40px;
+            /* border: 1px solid red; */
+            padding: 10px 10px;
+        }
+        input{
+width: 80%;
+height: 20px;
+border: 2px solid gray;
+border-radius: 5px;
+padding: 10px 20px;
+        }
+        label{
+            text-transform: capitalize;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 13px;
+        }
+        h1{
+            text-align: center;
+            margin: 5px;
+            text-transform: capitalize;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 25px;
+        }
+        button{
+            padding: 3px 10px;
+            margin: 10px 70px;
+            font-size: 17px;
+            border-radius: 4px;
+            border: none;
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+            box-shadow: 3px 2px 4px 2px rgb(178, 173, 173);
+        }
+        .dataTable{
+            display: flex;
+            justify-content: center;
+            display: none;
+        }
+        table{
+            width: 80%;
+            border-collapse:collapse;
+            text-align: center;
+        }
+    </style>
+
+    <div class="container">
+        <h1>result sheet</h1>
+        <div class="row">
+            <div class="col">
+                <label for="">name</label>
+                <input type="text" id="name">
+            </div>
+            <div class="col">
+<label for="">english</label>
+<input type="number" name="" max="100" min="0" id="eng">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">urdu</label>
+                <input type="number" id="udu">
+            </div>
+            <div class="col">
+<label for="">computer</label>
+<input type="number" name="" id="com">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="">physics</label>
+                <input type="number" id="phy">
+            </div>
+            <div class="col">
+<label for="">maths</label>
+<input type="number" name="" id="mth">
+            </div>
+        </div>
+        <button onclick="resultSheet()">click</button>
+    </div>
+    <div class="dataTable" id="dBlock">
+        <table border="1">
+            <thead>
+                <tr>
+                <th>name</th>
+                <th>english</th>
+                <th>urdu</th>
+                <th>computer</th>
+                <th>maths</th>
+                <th>physics</th>
+                <th>obtained</th>
+                <th>total</th>
+                <th>percentage</th>
+                <th>grad</th>
+                <th>remarks</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+           
+        </tbody>
+        </table>
+
+    </div>
+    <script> 
+    function resultSheet(){
+        let name = document.getElementById("name").value;
+        let english = document.getElementById("eng").value;
+        let urdu = document.getElementById("udu").value;
+        let computer = document.getElementById("com").value;
+        let physics = document.getElementById("phy").value;
+        let maths = document.getElementById("mth").value;
+if(name && english && urdu && computer && physics && maths  ){
+    if(english<=100 && urdu <=100 && maths <=100 && physics <=100 && computer <=100){
+        document.getElementById("body").innerHTML="<tr><td>"+name+"</td><td>"+english+"</td><td>"+urdu+"</td><td>"+computer+"</td><td>"+physics+"</td><td>"+maths+"</td><td>xzcvs</td><td>xzc</td><td>xzvc</td><td>xzc</td><td>xczvsd</td></tr>";
+    document.querySelector("#dBlock").style.display="block";
+    }else{
+        alert ("number should be less than or equal to 100")
+    }
+    
+}else{
+    alert("every field is required to fill")
+}
+    }
+        // let x = "ali";
+
+    </script>
+</body>
+</html>

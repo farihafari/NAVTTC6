@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 80%;
+        /* height: 100px; */
+        margin: 20px auto;
+    }
+    input[type="number"],input[type="text"]{
+        width: 40%;
+        height: 20px;
+        padding: 3px 10px;
+        border-radius: 5px;
+        border: 2px solid green;
+    }
+    input[type="submit"]{
+        padding:5px  10px;
+        background-color: rgb(210, 192, 169);
+        border: none;
+        border-radius:5px ;
+        box-shadow: 2px 4px 5px 2px gray;
+    }
+    h1{
+        text-transform: capitalize;
+        text-align: center;
+        color: green;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+    }
+    p{
+        text-align: center;
+        padding: 5px;
+        background-color: green;
+        color:rgb(210, 192, 169) ;
+        border-radius: 5px;
+        width: 50%;
+        margin: auto;
+        font-size: 30px;
+        font-weight: bold;
+        display: none;
+    }
+</style>
+<body>
+    <h1>mini calculator</h1>
+    <div>
+        <label for="">number 1</label>
+        <input type="number" id="num1" placeholder="enter the number for fisrt oprand">
+    </div>
+    <div>
+        <label for="">number 2</label>
+        <input type="number" id="num2" placeholder="enter the number for second oprand">
+    </div>
+    <div>
+        <label for="">operator</label>
+        <input type="text" id="operators" placeholder="enter the arithmatic operators for operation anyone">
+    </div>
+    <div>
+        <input type="submit" value="click" onclick="miniCalculator()" >
+    </div>
+    <p id="result"></p>
+    <script src="assets/js/minical.js"></script>
+</body>
+</html>
