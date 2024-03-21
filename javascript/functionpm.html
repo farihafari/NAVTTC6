@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .row{
+        width: 50%;
+        height: 500px;
+        margin: auto;
+    }
+.col-bimg{
+    /* display: flex;
+    justify-content: center; */
+    margin:0px 10%;
+    width: 50%;
+    height: 300px;
+    border: 1px solid;
+}
+.col-bimg>img{
+width: 100%;
+height: inherit;
+}
+.row2{
+width: 80%;
+height: 150px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.col{
+    width: 20%;
+    height: 80px;
+    border: 1px solid green;
+}
+.col>img{
+    width: 100%;
+    height: inherit;
+}
+</style>
+<body>
+    <div class="row">
+        <div class="col-bimg">
+            <img src="../assets/images/l1.webp" id="bImg" alt="">
+        </div>
+        <div class="row2">
+            <div class="col">
+                <img src="../assets/images/l2.webp" onclick="imgPreview(this)" id="sImg" alt="">
+
+            </div>
+            <div class="col">
+                <img src="../assets/images/l3.webp" onclick="imgPreview(this)" alt="">
+            </div>
+            <div class="col">
+                <img src="../assets/images/l4.webp" onclick="imgPreview(this)" alt="">
+            </div>
+            <div class="col">
+                <img src="../assets/images/l1.webp" onclick="imgPreview(this)" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="assets/js/functionpm.js"></script>
