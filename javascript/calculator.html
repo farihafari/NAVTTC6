@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    h1{
+        text-align: center;
+        text-transform: capitalize;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 60px;
+        color: #124076;
+        text-shadow: 2px 3px 2px gray;
+        padding: 20px;
+    }
+    div{
+        width: 80%;
+        margin: auto;
+    }
+    table{
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        border-collapse: collapse;
+    padding: 10px;
+    }
+td{
+    padding: 30px;
+}
+input{
+    width: 400px;
+    height: 45px;
+    margin-left:5% ;
+    border-radius: 6px;
+    font-size: 30px;
+    color: #124076;
+    padding: 10px;
+}
+button{
+    padding:15px 25px;
+    border: none;
+    border-radius: 4px;
+    background-color: #124076;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+}
+</style>
+<body>
+    <h1>basic calculator</h1>
+    <div>   
+         <table border="1">
+       
+        <tr >
+            <td colspan="4"><input type="text" name="" id="inp"></td>
+        </tr>
+  
+        <tr>
+            <td><button onclick="num(1)">1</button></td>
+            <td><button onclick="num(2)">2</button></td>
+            <td><button onclick="num(3)">3</button></td>
+            <td><button onclick="op('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="num(4)">4</button></td>
+            <td><button onclick="num(5)">5</button></td>
+            <td><button onclick="num(6)">6</button></td>
+            <td><button onclick="op('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="num(7)">7</button></td>
+            <td><button onclick="num(8)">8</button></td>
+            <td><button onclick="num(9)">9</button></td>
+            <td><button onclick="op('/')">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="num(0)">0</button></td>
+            <td><button onclick="op('*')">*</button></td>
+            <td><button onclick="operations()">=</button></td>
+            <td><button onclick="clearAll()">c</button></td>
+        </tr>
+    </table>
+</div>
+<script src="assets/js/calculator.js"></script>
+</body>
+</html>
