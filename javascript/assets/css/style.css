@@ -58,3 +58,7 @@ button{
     border-radius: 7px;
     box-shadow: 2px 3px 4px 2px gainsboro;
 }
+span{
+    margin: 4px 36px;
+    font-weight: bold;
+}
