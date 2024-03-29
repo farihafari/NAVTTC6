@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+   <table border="1">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>description</th>
+            <th>image</th>
+        </tr>
+    </thead>
+    <tbody id="detail">
+     
+    </tbody>
+   </table>
+    <script>
+        // let x = document.getElementById("demo");
+        let x =""
+        let mobileApp = [
+
+            {
+            name:"techno camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v1.jpg"
+        },
+        {
+            name:"vivo camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v2.jpg"
+        },
+        {
+            name:"iphone",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v3.jpg"
+        },
+        {
+            name:"infinix",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v4.jpg"
+        },  {
+            name:"techno camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v5.jpg"
+        },
+        
+        {
+            name:"techno camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v1.jpg"
+        },
+        {
+            name:"vivo camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v2.jpg"
+        },
+        {
+            name:"iphone",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v3.jpg"
+        },
+        {
+            name:"infinix",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v4.jpg"
+        },  {
+            name:"techno camon",
+            price:45000,
+            desc :" Lorem ipsum dolor sit amet consectetur adipisicing elit. Id maxime possimus, eligendi aspernatur omnis rerum aperiam quaerat est, culpa natus ipsa aliquid fugit. Corrupti quaerat illo non soluta unde minus.",
+            image:"assets/images/v5.jpg"
+        },
+    ]
+        // console.log(mobileApp,x)
+        // document.write(mobileApp.name+"<br>"+ mobileApp.price+"<br>"+mobileApp.desc);
+        for(let keys in mobileApp){
+        //    x.innerHTML+="<p>"+mobileApp[keys].name+"</p>";
+        x+=`
+        <tr>
+            <td>`+mobileApp[keys].name+`</td>
+            <td>${mobileApp[keys].price}</td>
+            <td>${mobileApp[keys].desc}</td>
+            <td><img src="${mobileApp[keys].image}"></td>
+        </tr>
+        `
+        }
+        detail.innerHTML=x;
+    </script>
+</body>
+</html>
