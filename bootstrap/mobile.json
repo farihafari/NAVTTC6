@@ -4,31 +4,36 @@
         "covers":
         [
             {
-                "name":"mobile cover c1",
+                    "name":"cover1",
+                "description":"mobile cover c1",
                 "price":2500,
                 "image":"assets/images/mobile/ma.webp"
             },
          
             {
-                "name":"mobile cover c2",
+                    "name":"cover2",
+                "description":"mobile cover c2",
                 "price":2500,
                 "image":"assets/images/mobile/ma.webp"
             },
          
             {
-                "name":"mobile cover c3",
+                    "name":"cover3",
+                "description":"mobile cover c3",
                 "price":2500,
                 "image":"assets/images/mobile/ma.webp"
             }
         ],
         "protector":[
             {
-                "name":"mobile protector c1",
+                    "name":"protector1",
+                "description":"mobile protector c1",
                 "price":2500,
                 "image":"assets/images/mobile/ma.webp"
             },
                 {
-                "name":"mobile protector c2",
+                        "name":"protector2",
+                "description":"mobile protector c2",
                 "price":2500,
                 "image":"assets/images/mobile/ma.webp"
             }
@@ -37,34 +42,40 @@
     "computer accessories":{
         "usb fans":[
             {
-                "name":"ram c1",
+                    "name":"usb1",
+                "description":"ram c1",
                 "price":2500,
                 "image":"assets/images/computer/cas.webp"
             },
    {
-                "name":"ram c2",
+        "name":"usb2",
+                "description":"ramc2",
                 "price":2500,
                 "image":"assets/images/computer/cas.webp"
             }
         ],
         "Keyboards":[
             {
-                "name":"Keyboard (wired) for pc & laptop 100% orignal (DEll) USB Slim Business Keyboard",
+                    "name":"keyboard1",
+                "description":"Keyboard (wired) for pc & laptop 100% orignal (DEll) USB Slim Business Keyboard",
                 "price":699,
                 "image":"assets/images/computer/k1.webp"
             },
    {
-                "name":"Keyboard usb wired mini Keyboard usb wired Quantum mini wired Keyboard 87 keys compact size",
+        "name":"keyboard 2",
+                "description":"Keyboard usb wired mini Keyboard usb wired Quantum mini wired Keyboard 87 keys compact size",
                 "price":1199,
                 "image":"assets/images/computer/k2.webp"
             },
             {
-                "name":"bluetooth keyboard - wireless keyboard - small keyboard - keyboard with touch pad for smart tv - smart tv keyboard touch pad",
+                    "name":"keyboard3",
+                "description":"bluetooth keyboard - wireless keyboard - small keyboard - keyboard with touch pad for smart tv - smart tv keyboard touch pad",
                 "price":900,
                 "image":"assets/images/computer/k3.webp"
             },
    {
-                "name":"Wireless Keyboard And Mouse Retro QW01",
+        "name":"keyboard4",
+                "description":"Wireless Keyboard And Mouse Retro QW01",
                 "price":2139,
                 "image":"assets/images/computer/k4.webp"
             }
@@ -74,24 +85,28 @@
     "game accessories":{
         "mouse pad":[
             {
-                "name":"Bloody BP-30M Gaming Mouse Pad - Anti Slip Rubber Base - Fine Knit Edges",
+                    "name":"mouse1",
+                "description":"Bloody BP-30M Gaming Mouse Pad - Anti Slip Rubber Base - Fine Knit Edges",
                 "price":1449,
                 "image":"assets/images/computer/cas.webp"
             },
    {
-                "name":"Bloody MP-75N - Extended Roll-Up Fabric RGB Gaming Mouse Pad - 10 Lighting Effects - On/Off Switch - Non-Slip Rubber Base - Fiber Optic Border- For PC, Laptop, Gaming Setup",
+        "name":"mouse2",
+                "description":"Bloody MP-75N - Extended Roll-Up Fabric RGB Gaming Mouse Pad - 10 Lighting Effects - On/Off Switch - Non-Slip Rubber Base - Fiber Optic Border- For PC, Laptop, Gaming Setup",
                 "price":4849,
                 "image":"assets/images/computer/cas.webp"
             }
         ],
         "joystick":[
             {
-                "name":" JoyStick Wired USB 2.0 Black Gamepad Joystick Joypad Game Controller for PC, Laptop, Computer, Android TV ~ Double Shock Vibration Ultimate Joystick Gaming Controller for Win7/8/10/11 XP, PS3, PS4 & Vista fo A H Shop",
+                    "name":"joystick1",
+                "description":" JoyStick Wired USB 2.0 Black Gamepad Joystick Joypad Game Controller for PC, Laptop, Computer, Android TV ~ Double Shock Vibration Ultimate Joystick Gaming Controller for Win7/8/10/11 XP, PS3, PS4 & Vista fo A H Shop",
                 "price":2500,
                 "image":"assets/images/game/js1.webp"
             },
    {
-                "name":"Applicable PS5 portal Psp Transparent Silicone Case ps5 Streaming PSP TPU Soft Shell Protective Shell",
+        "name":"joystick2",
+                "description":"Applicable PS5 portal Psp Transparent Silicone Case ps5 Streaming PSP TPU Soft Shell Protective Shell",
                 "price":4447,
                 "image":"assets/images/computer/game/js2.webp"
             }
