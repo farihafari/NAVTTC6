@@ -6,5 +6,5 @@ console.log(x);
 function imgPreview(Simg){
     let Bimg = document.querySelector("#bImg");
     // let Simg = document.querySelector('#sImg');
-    BimWg.src 
+    Bimg.src = Simg.src
 }

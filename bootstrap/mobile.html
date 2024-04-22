@@ -11,7 +11,87 @@
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </head>
+  <style>
+    .nb{
+text-decoration: none !important;
+font-size: 20px;
+font-weight: bold;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+letter-spacing: 3px;
+color: white;
+    }
+    .nb>span{
+text-transform: uppercase;
+font-size: 40px;
+font-weight: bold;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+letter-spacing: 3px;
+padding-top: 0rem !important;
+padding-bottom: 0rem !important;
+    }
+    .navbar{
+        background: linear-gradient(to left,#141E46,#496989);
+    }
+    .nav-link{
+        color: white !important;
+        font-size: 15px !important  ;
+        font-weight: 500;
+    }
+    .carousel-caption{
+        color: black;
+    }
+    h1{
+        color: #141E46;
+        font-weight: bold;
+        text-shadow: 3px 2px 2px #496989;
+    }
+    h4{
+        font-size: 20px;
+    }
+    .proAnchor{
+        background-color: #496989;
+        color: white;
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+</style>
   <body>
+    <nav class="navbar navbar-expand-md navbar-light ">
+      <div class="container-fluid">
+        <a class="nb" href="#"><span>e</span>lectronics <span>h</span>ub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" id="search" aria-label="Search">
+           
+          </form>
+        </div>
+      </div>
+    </nav>
       <div class="container">
         <h1 class="text-capitalize text-info text-center py-5">mobile accessories</h1>
         <div class="row" id="product">
@@ -35,18 +115,18 @@ $(document).ready(function(){
 let column="";
 let modal ="";
 $.each(data,function(firstKey,firstKeyObject){
-console.log(firstKey);
+// console.log(firstKey);
 // console.log(firstKeyObject);
 // level 2
 
 $.each(firstKeyObject,function(secondKey,secondKeyArray){
 
-    console.log(secondKey);
+    // console.log(secondKey);
     // console.log(secondKeyArray);
 // level 3
 $.each(secondKeyArray,function(index,objects){
 // console.log(index);
-console.log(objects.price);
+// console.log(objects.price);
 column+=` <div class="col-lg-3 mt-3">
                 <div class="card">
                     <img class="card-img-top" src="${objects.image}" alt="Title" />
@@ -91,7 +171,7 @@ more
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <a class="btn btn-primary" href="detail.html">details</a>
       </div>
     </div>
   </div>
@@ -104,7 +184,43 @@ more
 
 })
 $("#modalData").html(modal)
-$('#product').html(column)
+$('#product').html(column);
+ 
+// search 
+$("#search").on("keyup",function(){
+  let fd="";
+  let searchData = $(this).val().toLowerCase();
+  $.each(data,function(firstKey,firstKeyObject){
+    // console.log(firstKeyObject);
+    $.each(firstKeyObject,function(secondKey,secondKeyArray){
+      // console.log(secondKeyArray)
+      // search data
+      let filterData = secondKeyArray.filter(function(arrayObject){
+return arrayObject.name.indexOf(searchData)>-1;
+      });
+      $.each(filterData,function(index,values){
+        // console.log(values.name)
+        fd+=` <div class="col-lg-3 mt-3">
+                <div class="card">
+                    <img class="card-img-top" src="${values.image}" alt="Title" />
+                    <div class="card-body">
+                        <h4 class="card-title">${values.name}</h4>
+                        <p class="card-text">${values.price}</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${values.name}${index}">
+more
+</button>
+                    </div>
+                </div>
+                
+            </div>`
+      })
+      // console.log(filterData);
+    })
+  })
+  // console.log(fd)
+  $('#product').html(fd);
+
+})
         }
     })
 })
