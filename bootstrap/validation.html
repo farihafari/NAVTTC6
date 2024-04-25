@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    </head>
+
+    <body>
+     <div class="container">
+        <h1 class="text-center text-capitalize text-info my-3">registration form</h1>
+<div class="mb-3">
+    <label for="" class="form-label">Name</label>
+    <input
+        type="text"
+        name=""
+        id="uName"
+        class="form-control"
+        placeholder=""
+        aria-describedby="helpId"
+    />
+    <small ></small>
+</div>
+<div class="mb-3">
+    <label for="" class="form-label">Email</label>
+    <input
+        type="email"
+        name=""
+        id="uEmail"
+        class="form-control"
+        placeholder=""
+        aria-describedby="helpId"
+    />
+    <small></small>
+</div>
+<div class="mb-3">
+    <label for="" class="form-label">Password</label>
+    <input
+        type="text"
+        name=""
+        id="uPassword"
+        class="form-control"
+        placeholder=""
+        aria-describedby="helpId"
+    />
+    <small></small>
+</div>
+<div class="mb-3">
+    <label for="" class="form-label">confirm Password</label>
+    <input
+        type="password"
+        name=""
+        id="uCPassword"
+        class="form-control"
+        placeholder=""
+        aria-describedby="helpId"
+    />
+    <small></small>
+</div>
+<button
+    type="button"
+    class="btn btn-primary"
+>
+    click
+</button>
+
+     </div>
+     <script>
+$(document).ready(function(){
+    $("#uName").on("keyup",function(){
+        let userName = $('#uName').val();
+        let regexName = /^[A-Za-z\s]{3,14}$/;
+        if(!regexName.test(userName)){
+            $(this).css("border","2px solid red");
+            $(this).next("small").text("please enter the valid data").css({
+                "color":"red",
+                "font-weight":"bold"
+            });
+        }else{
+            $(this).css("border","3px solid green");
+            $(this).next("small").hide();
+        }
+    })
+    // email
+    $("#uEmail").on("keyup",function(){
+        let userEmail = $('#uEmail').val();
+        // let regexEmail = /^[a-z,0-9]{3,14}[@][a-z]{5,8}[.][a-z]{2,3}$/;
+        let regexEmail = /^[\w]{3,14}[@][a-z]{5,8}[.][a-z]{2,3}$/;
+
+        if(!regexEmail.test(userEmail)){
+            $(this).css("border","2px solid red");
+            $(this).next("small").text("please enter the valid email").css({
+                "color":"red",
+                "font-weight":"bold"
+            });
+        }else{
+            $(this).css("border","3px solid green");
+            $(this).next("small").hide();
+        }
+    }) 
+     //password
+     $("#uPassword").on("keyup",function(){
+        let userPassword = $('#uPassword').val();
+       
+        let regexPassword = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+
+        if(!regexPassword.test(userPassword)){
+            $(this).css("border","2px solid red");
+            $(this).next("small").text("please enter the stronge password").css({
+                "color":"red",
+                "font-weight":"bold"
+            });
+        }else{
+            $(this).css("border","3px solid green");
+            $(this).next("small").hide();
+        }
+    }) 
+    $("#uCPassword").on('keyup',function(){
+        let userPassword = $('#uPassword').val();
+        let userCPassword = $('#uCPassword').val();
+        if(userCPassword != userPassword){
+            $(this).css("border","2px solid red");
+            $(this).next("small").text("confirm password must be match with password").css({
+                "color":"red",
+                "font-weight":"bold"
+            });
+        }else{
+            $(this).css("border","3px solid green");
+            $(this).next("small").hide();
+        }
+    })
+    // for null inputs
+    function emptyFields(id){
+        if($(id).val()==""){
+            $(id).css("border","2px solid red");
+            $(id).next("small").text("this field is required to fill").css({
+                "color":"red",
+                "font-weight":"bold"
+            })
+        }else{
+            $(id).css("border","2px solid green");
+            $(id).next("small").hide();
+        }
+    }
+    // click for submission
+    $("button").click(function(){
+        let userName = $('#uName').val();
+        let regexName = /^[A-Za-z\s]{3,14}$/;
+        let userEmail = $('#uEmail').val();
+        let regexEmail = /^[\w]{3,14}[@][a-z]{5,8}[.][a-z]{2,3}$/;
+        let userPassword = $('#uPassword').val();
+       let regexPassword = /^[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+        let userCPassword = $('#uCPassword').val();
+        if(userName=="" && userEmail=="" && userPassword=="" && userCPassword ==""){
+            emptyFields("#uName");
+            emptyFields("#uEmail");
+            emptyFields("#uPassword");
+            emptyFields("#uCPassword");
+
+
+        }else if(!(regexName.test(userName) && regexEmail.test(userEmail) && regexPassword.test(userPassword) && userPassword == userCPassword)){
+            alert("data must be validated in every field")
+        }else{
+            alert("data submitted")
+        }
+    })
+})
+     </script>
+    </body>
+</html>
