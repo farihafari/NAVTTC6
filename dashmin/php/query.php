@@ -1,5 +1,7 @@
 <?php
 include("dbcon.php");
+// category ref
+$catref = 'img/category/';
 if(isset($_POST['addCategory'])){
   $catName = $_POST['cName'];
   $catImageName= $_FILES['cImage']['name'];
