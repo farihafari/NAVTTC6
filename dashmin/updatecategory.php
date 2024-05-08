@@ -16,6 +16,7 @@ if (isset($_GET['Cid'])) {
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">update category</h6>
                 <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="catId" value="<?php echo $catData['catId'] ?>">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">category name</label>
                         <input type="text" class="form-control" name="cName" aria-describedby="emailHelp" value="<?php echo $catData['catName'] ?>">

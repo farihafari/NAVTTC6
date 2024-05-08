@@ -31,7 +31,7 @@ include("compnent/header.php");
                                 <img src="<?php echo $catref . $values['catImage'] ?>" alt="" width="80px">
                             </td>
                             <td><a href="updatecategory.php?Cid=<?php echo $values["catId"] ?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="" class="btn btn-danger">Delete</a></td>
+                            <td><a href="?deleteKey=<?php echo $values["catId"] ?>" class="btn btn-danger">Delete</a></td>
                         </tr>
                     <?php
                     }
