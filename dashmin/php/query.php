@@ -2,6 +2,7 @@
 include("dbcon.php");
 // category ref
 $catref = 'img/category/';
+$proRef = 'img/products/';
 // add category
 if (isset($_POST['addCategory'])) {
   $catName = $_POST['cName'];
@@ -65,4 +66,33 @@ if (isset($_GET['deleteKey'])) {
   echo "<script>alert('category delete');
   location.assign('viewcategory.php')
   </script>";
+}
+// add product 
+if (isset($_POST['addProduct'])) {
+  $productName = $_POST['pName'];
+  $productPrice = $_POST['pPrice'];
+  $productQuantity = $_POST['pQuantity'];
+  $productDescription = $_POST['pDescription'];
+  $productCatId = $_POST['pCatId'];
+  $productImageName = $_FILES['pImage']["name"];
+  $productTmpName = $_FILES['pImage']["tmp_name"];
+  $extension = pathinfo($productImageName, PATHINFO_EXTENSION);
+  $desig = "img/products/" . $productImageName;
+  if ($extension == "png" || $extension == "jpg" || $extension == "jpeg" || $extension == "webp") {
+    if (move_uploaded_file($productTmpName, $desig)) {
+      $query = $pdo->prepare("INSERT INTO `products`(`productName`, `productQuantity`, `productPrice`, `productDesscription`, `productCatId`,`productImage`) VALUES(:pn,:pq,:pp,:pd,:pc,:pi)");
+      $query->bindParam("pn", $productName);
+      $query->bindParam("pq", $productQuantity);
+      $query->bindParam("pp", $productPrice);
+      $query->bindParam("pd", $productDescription);
+      $query->bindParam("pc", $productCatId);
+      $query->bindParam("pi", $productImageName);
+      $query->execute();
+      echo "<script>alert('product added ')</script>";
+    } else {
+      echo "<script>alert('file not uploaded')</script>";
+    }
+  } else {
+    echo "<script>alert('invalid file type')</script>";
+  }
 }
