@@ -21,7 +21,7 @@ include("compnent/header.php");
 
                     </tr>
                 </thead>
-                <tbody> 
+                <tbody>
                     <?php
                     $query = $pdo->query("SELECT `products`.*, `categories`.`catName`
 FROM `products` 
@@ -37,8 +37,8 @@ FROM `products`
                             <td><?php echo $values['productDesscription'] ?></td>
                             <td><?php echo $values['catName'] ?></td>
                             <td><img src="<?php echo $proRef . $values['productImage'] ?>" alt="" width="90"></td>
-                            <td><a href="" class="btn btn-success">Edit</a></td>
-                            <td><a href="" class="btn btn-danger">delete</a></td>
+                            <td><a href="updateproduct.php?proid=<?php echo $values['productId'] ?>" class="btn btn-success">Edit</a></td>
+                            <td><a href="?deletepro=<?php echo $values['productId'] ?>" class="btn btn-danger">delete</a></td>
                         </tr>
 
                     <?php
