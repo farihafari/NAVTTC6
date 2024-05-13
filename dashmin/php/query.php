@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("dbcon.php");
 // category ref
 $catref = 'img/category/';
