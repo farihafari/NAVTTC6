@@ -112,9 +112,16 @@ include("php/query.php");
                             <li>
                                 <a href="contact.html">Contact</a>
                             </li>
-                            <li>
-                                <a href="login.php">login</a>
-                            </li>
+                            <?php
+                            if (!isset($_SESSION['sessionEmail']  )) {
+                            ?>
+                                <li>
+                                    <a href="login.php">login</a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
                             <?php
                             if (isset($_SESSION["sessionEmail"])) {
                             ?>

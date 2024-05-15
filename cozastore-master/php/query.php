@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$catImgRef = "../dashmin/img/category/";
+$proImgRef = "../dashmin/img/products/";
 // session_unset();
 include("dbcon.php");
 if (isset($_POST['register'])) {
