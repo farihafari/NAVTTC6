@@ -85,16 +85,12 @@ include("php/query.php");
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu">
-                                <a href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Homepage 1</a></li>
-                                    <li><a href="home-02.html">Homepage 2</a></li>
-                                    <li><a href="home-03.html">Homepage 3</a></li>
-                                </ul>
+                                <a href="index.php">Home</a>
+
                             </li>
 
                             <li>
-                                <a href="product.html">Shop</a>
+                                <a href="product.php">Shop</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
@@ -113,7 +109,7 @@ include("php/query.php");
                                 <a href="contact.html">Contact</a>
                             </li>
                             <?php
-                            if (!isset($_SESSION['sessionEmail']  )) {
+                            if (!isset($_SESSION['sessionEmail'])) {
                             ?>
                                 <li>
                                     <a href="login.php">login</a>
