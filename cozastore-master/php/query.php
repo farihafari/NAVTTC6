@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+// session_unset();
 $catImgRef = "../dashmin/img/category/";
 $proImgRef = "../dashmin/img/products/";
 // session_unset();
@@ -44,5 +44,23 @@ if (isset($_POST['login'])) {
             location.assign('../dashmin/index.php')
             </script>";
         }
+    }
+}
+// add to cart
+if (isset($_POST['addToCart'])) {
+    $pId = $_POST['proId'];
+    $pName = $_POST['proName'];
+    $pPrice = $_POST['proPrice'];
+    $pQuantity = $_POST['proQuantity'];
+    $pImage = $_POST['proImage'];
+    if (isset($_SESSION['cart'])) {
+        $count = count($_SESSION['cart']);
+        $_SESSION['cart'][$count]
+            = array("pId" => $pId, "pName" => $pName, "pQuantity" => $pQuantity, "pPrice" => $pPrice, "pImage" => $pImage);
+        echo "<script>alert('product add into cart')</script>";
+    } else {
+        $_SESSION['cart'][0] = array("pId" => $pId, "pName" => $pName, "pQuantity" => $pQuantity, "pPrice" => $pPrice, "pImage" => $pImage);
+        echo "<script>alert('product add into cart')</script>";
+        // print_r($_SESSION['cart']);
     }
 }
