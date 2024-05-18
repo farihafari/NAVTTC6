@@ -54,13 +54,39 @@ if (isset($_POST['addToCart'])) {
     $pQuantity = $_POST['proQuantity'];
     $pImage = $_POST['proImage'];
     if (isset($_SESSION['cart'])) {
-        $count = count($_SESSION['cart']);
-        $_SESSION['cart'][$count]
-            = array("pId" => $pId, "pName" => $pName, "pQuantity" => $pQuantity, "pPrice" => $pPrice, "pImage" => $pImage);
-        echo "<script>alert('product add into cart')</script>";
+        $cartExist = false;
+
+        foreach ($_SESSION['cart'] as $key => $values) {
+            if ($values['pId'] == $pId) {
+
+                $_SESSION['cart'][$key]['pQuantity'] += $pQuantity;
+                $cartExist = true;
+                echo "<script>alert('cart has been updated')</script>";
+                break;
+            }
+        }
+        if (!$cartExist) {
+            $count = count($_SESSION['cart']);
+            $_SESSION['cart'][$count]
+                = array("pId" => $pId, "pName" => $pName, "pQuantity" => $pQuantity, "pPrice" => $pPrice, "pImage" => $pImage);
+            echo "<script>alert('product add into cart')</script>";
+        }
     } else {
         $_SESSION['cart'][0] = array("pId" => $pId, "pName" => $pName, "pQuantity" => $pQuantity, "pPrice" => $pPrice, "pImage" => $pImage);
         echo "<script>alert('product add into cart')</script>";
         // print_r($_SESSION['cart']);
+    }
+}
+// delete item
+if (isset($_GET['deleteCart'])) {
+    $CartID = $_GET['deleteCart'];
+    foreach ($_SESSION['cart'] as $key => $values) {
+        if ($values['pId'] == $CartID) {
+            unset($_SESSION['cart'][$key]);
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+            echo "<script>alert('product remove from cart');
+            location.assign('shoping-cart.php');
+            </script>";
+        }
     }
 }
