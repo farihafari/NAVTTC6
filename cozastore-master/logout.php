@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_unset();
+unset($_SESSION['sessionEmail']);
 echo "<script>alert('logout successfully');
 location.assign('index.php')
 </script>";

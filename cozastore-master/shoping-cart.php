@@ -126,14 +126,22 @@ include("components/header.php")
 
 						<div class="size-209 p-t-1">
 							<span class="mtext-110 cl2">
-								$ <?php echo $subTotal ?>
+								$ <?php echo $subTotal 	?>
 							</span>
 						</div>
 					</div>
-
-					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-						Proceed to Checkout
-					</button>
+					<?php
+					if (!isset($_SESSION['sessionEmail'])) {
+					?>
+						<a href="login.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Proceed to Checkout</a>
+					<?php
+					} else {
+					?>
+						<a href="checkout.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Proceed to Checkout</a>
+					<?php
+					}
+					?>
+				
 				</div>
 			</div>
 		</div>

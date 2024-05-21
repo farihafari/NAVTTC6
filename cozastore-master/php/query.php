@@ -31,9 +31,11 @@ if (isset($_POST['login'])) {
     $query->execute();
     $userData = $query->fetch(PDO::FETCH_ASSOC);
     if ($userData) {
+        $_SESSION['sessionId'] = $userData['id'];
         $_SESSION['sessionEmail'] = $userData['email'];
         $_SESSION['sessionName'] = $userData['name'];
         $_SESSION['sessionPassword'] = $userData['password'];
+        $_SESSION['sessionPhone'] = $userData['phone'];
         $_SESSION['sessionRole'] = $userData['role'];
         if ($_SESSION['sessionRole'] == "user") {
             echo "<script>alert('logged in successfully');
@@ -89,4 +91,57 @@ if (isset($_GET['deleteCart'])) {
             </script>";
         }
     }
+}
+// placeorder
+if (isset($_POST['orderPlace'])) {
+    date_default_timezone_set("Asia/karachi");
+    $now = time();
+    $dateString = date("Y-m-d H:i:s", $now);
+    $time = date("H:i:s", strtotime($dateString));
+    // echo "<script>
+    // alert('" . $dateString . "')
+    // alert('" . $time . "')</script>";
+    $userId = $_SESSION['sessionId'];
+    $userName = $_POST['name'];
+    $userEmail = $_POST['email'];
+    $userPhone = $_POST['phone'];
+    foreach ($_SESSION['cart'] as $orderkey => $ordervalues) {
+        $proId = $ordervalues['pId'];
+        $proName = $ordervalues['pName'];
+        $proQuantity = $ordervalues['pQuantity'];
+        $proPrice = $ordervalues['pPrice'];
+        $proImage = $ordervalues['pImage'];
+        $orderQuery = $pdo->prepare("INSERT INTO `orders`( `productId`, `productName`, `productPrice`, `productQuantity`, `userId`, `orderDate`, `orderTime`, `productImage`) VALUES(:opi,:opn,:opp,:opq,:oui,:od,:ot,:opim)");
+        $orderQuery->bindParam("opi", $proId);
+        $orderQuery->bindParam("opn", $proName);
+        $orderQuery->bindParam("opq", $proQuantity);
+        $orderQuery->bindParam("opp", $proPrice);
+        $orderQuery->bindParam("oui", $userId);
+        $orderQuery->bindParam("opim", $proImage);
+        $orderQuery->bindParam("od", $dateString);
+        $orderQuery->bindParam("ot", $time);
+        $orderQuery->execute();
+    }
+    $itemCount = count($_SESSION['cart']);
+    $pQuantityCount = 0;
+    $pTotal = 0;
+    $invoiceQuery = $pdo->prepare("INSERT INTO `invoices`( `userId`, `userEmail`, `userName`, `itemCount`, `totalQuantity`, `totalAmount`, `invoiceDate`, `invoiceTime`) VALUES(:iui,:iue,:iun,:itc,:itq,:ita,:id,:it) ");
+
+    $invoiceQuery->bindParam("iui", $userId);
+    $invoiceQuery->bindParam("iue", $userEmail);
+    $invoiceQuery->bindParam("iun", $userName);
+    $invoiceQuery->bindParam("itc", $itemCount);
+    $invoiceQuery->bindParam("id", $dateString);
+    $invoiceQuery->bindParam("it", $time);
+    foreach ($_SESSION['cart'] as $invoicevalues) {
+        $pQuantityCount += $invoicevalues['pQuantity'];
+        $pTotal += $invoicevalues['pQuantity'] * $invoicevalues['pPrice'];
+    }
+    $invoiceQuery->bindParam("itq", $pQuantityCount);
+    $invoiceQuery->bindParam("ita", $pTotal);
+    $invoiceQuery->execute();
+    unset($_SESSION['cart']);
+    echo "<script>alert('order placed successfully');
+    location.assign('index.php');
+    </script>";
 }

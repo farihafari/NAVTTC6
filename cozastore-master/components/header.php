@@ -293,8 +293,9 @@ include("php/query.php");
             <div class="header-cart-content flex-w js-pscroll">
                 <ul class="header-cart-wrapitem w-full">
                     <?php
+                    $subTotal = 0;
                     if (isset($_SESSION['cart'])) {
-                        $subTotal = 0;
+
                         foreach ($_SESSION['cart'] as $values) {
                             $subTotal += $values['pQuantity'] * $values['pPrice'];
                     ?>
