@@ -1,5 +1,16 @@
 <?php
 session_start();
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 // session_unset();
 $catImgRef = "../dashmin/img/category/";
 $proImgRef = "../dashmin/img/products/";
@@ -101,17 +112,25 @@ if (isset($_POST['orderPlace'])) {
     // echo "<script>
     // alert('" . $dateString . "')
     // alert('" . $time . "')</script>";
+    function confirmationCode()
+    {
+        $code = str_pad(rand(0, pow(10, 6) - 1), 6, 0, STR_PAD_LEFT);
+        return '#od' . $code;
+    }
+
+
     $userId = $_SESSION['sessionId'];
     $userName = $_POST['name'];
     $userEmail = $_POST['email'];
     $userPhone = $_POST['phone'];
+    $confirmationCode = confirmationCode();
     foreach ($_SESSION['cart'] as $orderkey => $ordervalues) {
         $proId = $ordervalues['pId'];
         $proName = $ordervalues['pName'];
         $proQuantity = $ordervalues['pQuantity'];
         $proPrice = $ordervalues['pPrice'];
         $proImage = $ordervalues['pImage'];
-        $orderQuery = $pdo->prepare("INSERT INTO `orders`( `productId`, `productName`, `productPrice`, `productQuantity`, `userId`, `orderDate`, `orderTime`, `productImage`) VALUES(:opi,:opn,:opp,:opq,:oui,:od,:ot,:opim)");
+        $orderQuery = $pdo->prepare("INSERT INTO `orders`( `productId`, `productName`, `productPrice`, `productQuantity`, `userId`, `orderDate`, `orderTime`, `productImage`,`confirmationcode`) VALUES(:opi,:opn,:opp,:opq,:oui,:od,:ot,:opim,:ccode)");
         $orderQuery->bindParam("opi", $proId);
         $orderQuery->bindParam("opn", $proName);
         $orderQuery->bindParam("opq", $proQuantity);
@@ -120,12 +139,14 @@ if (isset($_POST['orderPlace'])) {
         $orderQuery->bindParam("opim", $proImage);
         $orderQuery->bindParam("od", $dateString);
         $orderQuery->bindParam("ot", $time);
+        $orderQuery->bindParam("ccode", $confirmationCode);
+
         $orderQuery->execute();
     }
     $itemCount = count($_SESSION['cart']);
     $pQuantityCount = 0;
     $pTotal = 0;
-    $invoiceQuery = $pdo->prepare("INSERT INTO `invoices`( `userId`, `userEmail`, `userName`, `itemCount`, `totalQuantity`, `totalAmount`, `invoiceDate`, `invoiceTime`) VALUES(:iui,:iue,:iun,:itc,:itq,:ita,:id,:it) ");
+    $invoiceQuery = $pdo->prepare("INSERT INTO `invoices`( `userId`, `userEmail`, `userName`, `itemCount`, `totalQuantity`, `totalAmount`, `invoiceDate`, `invoiceTime`,`confirmationcode`) VALUES(:iui,:iue,:iun,:itc,:itq,:ita,:id,:it,:icc) ");
 
     $invoiceQuery->bindParam("iui", $userId);
     $invoiceQuery->bindParam("iue", $userEmail);
@@ -133,6 +154,7 @@ if (isset($_POST['orderPlace'])) {
     $invoiceQuery->bindParam("itc", $itemCount);
     $invoiceQuery->bindParam("id", $dateString);
     $invoiceQuery->bindParam("it", $time);
+    $invoiceQuery->bindParam("icc", $confirmationCode);
     foreach ($_SESSION['cart'] as $invoicevalues) {
         $pQuantityCount += $invoicevalues['pQuantity'];
         $pTotal += $invoicevalues['pQuantity'] * $invoicevalues['pPrice'];
@@ -144,4 +166,38 @@ if (isset($_POST['orderPlace'])) {
     echo "<script>alert('order placed successfully');
     location.assign('index.php');
     </script>";
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'farihaaptech888@gmail.com';                     //SMTP username
+        $mail->Password   = 'rkbokfhbogfyolco';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('farihaaptech888@gmail.com', 'fariha');
+        $mail->addAddress($userEmail, $_SESSION['sessionName']);     //Add a recipient
+        // $mail->addAddress('ellen@example.com');               //Name is optional
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        //Attachments
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Confirmation of order';
+        $mail->Body    = 'Dear ' . $_SESSION['sessionName'] . ' your order confirmation code is ' . $confirmationCode . '</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
 }
